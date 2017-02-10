@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<script src="https://rawgit.com/emn178/js-md5/master/build/md5.min.js"></script>
+</head>
+<body>
+<script>
+function crypt(form) {
+	var user = form.user_id.value;
+	var pwd = form.password.value;
+	form.password.value = md5(user + md5(pwd));
+	return true;
+}
+</script>
+<form name ="loginform" action="LoginServlet" method="post" onsubmit="return crypt(this);">
+Username: <input type="text" name="user_id">
+<br>
+Password: <input type="password" name="password">
+<br>
+<input type="submit" value="Login">
+</form>
+</body>
+</html>
